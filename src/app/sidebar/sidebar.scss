@@ -1,0 +1,91 @@
+.custom-header {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    animation: fadeInSlide 1s ease forwards;
+    opacity: 0;
+  
+    img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+  
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 0;
+      color: #ffffff;
+    }
+  }
+  
+  .info-links a {
+    color: #ecf0f1;
+    margin-left: 1rem;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    cursor: pointer;
+  
+    &:hover {
+      color: #a2d2ff;
+      opacity: 0.9;    
+    }
+    &.active {
+      color: #90caf9; 
+    }
+  }
+  
+  .main-nav {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .category-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 6px 12px;
+  
+    &:hover {
+      color: #a2d2ff;
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+  
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+  
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes fadeInSlide {
+    from {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  

@@ -1,0 +1,86 @@
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  
+  .hero-text {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+  }
+  
+  ng-lottie {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.3s;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  ng-lottie:hover {
+    transform: scale(1.05);
+  }
+  
+  // fade+slide stagger za tekst/gumb
+  .fade-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlideIn 0.6s ease-out forwards;
+  }
+  
+  .fade-item:nth-child(1) {
+    animation-delay: 0.3s;
+  }
+  
+  .fade-item:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  
+  .fade-item:nth-child(3) {
+    animation-delay: 0.7s;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeSlideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  ng-lottie:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  
+  
+  

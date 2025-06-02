@@ -1,0 +1,49 @@
+.trusted-by {
+    background-color: #edf1f7;
+    padding: 3rem 1rem;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    animation: fadeInUp 0.8s ease forwards;
+  
+    h5 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 2rem;
+      letter-spacing: 0.5px;
+    }
+  
+    .brand-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+  
+    .brand-logos img {
+      height: 40px;
+      filter: grayscale(100%);
+      opacity: 0.6;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+  
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
