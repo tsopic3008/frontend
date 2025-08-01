@@ -1,0 +1,13 @@
+<div class="snackbar" *ngIf="show && message" [class]="'snackbar-' + message.type">
+  <div class="snackbar-content">
+    <div class="snackbar-icon">
+      <span *ngIf="message.type === 'success'">✓</span>
+      <span *ngIf="message.type === 'error'">✕</span>
+      <span *ngIf="message.type === 'info'">ℹ</span>
+      <span *ngIf="message.type === 'warning'">⚠</span>
+    </div>
+    <div class="snackbar-message">
+      {{ message.message }}
+    </div>
+  </div>
+</div> 

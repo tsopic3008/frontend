@@ -8,6 +8,22 @@
             <a routerLink="/home" routerLinkActive="active">Home</a>
             <a routerLink="/about" routerLinkActive="active">About</a>
             <a routerLink="/contact" routerLinkActive="active">Contact</a>
+            
+            <div *ngIf="!isLoggedIn" class="auth-buttons">
+                <button class="register-btn" (click)="openRegisterModal()">
+                    Register
+                </button>
+                <button class="login-btn" (click)="openLoginModal()">
+                    Login
+                </button>
+            </div>
+            
+            <div *ngIf="isLoggedIn" class="user-welcome">
+                <span class="welcome-text">Welcome, {{ getUserGivenName() }}!</span>
+                <button class="logout-btn" (click)="logout()">
+                    Logout
+                </button>
+            </div>
         </nav>
     </div>
 
@@ -17,3 +33,17 @@
         <a class="btn category-btn" routerLink="/kids">Kids</a>
     </div>
 </div>
+
+<app-login-modal 
+    *ngIf="showLoginModal" 
+    (closeModal)="closeLoginModal()"
+    (loginSuccess)="onLoginSuccess()"
+    (showMessage)="onShowMessage($event)"
+></app-login-modal>
+
+<app-register-modal 
+    *ngIf="showRegisterModal" 
+    (closeModal)="closeRegisterModal()"
+    (registerSuccess)="onRegisterSuccess()"
+    (showMessage)="onShowMessage($event)"
+></app-register-modal>

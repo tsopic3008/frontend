@@ -4,3 +4,8 @@
 <div style="padding: 2rem;">
   <router-outlet></router-outlet>
 </div>
+
+<app-snackbar 
+  [show]="showSnackbar" 
+  [message]="snackbarMessage"
+></app-snackbar>
