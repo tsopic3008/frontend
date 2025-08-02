@@ -1,15 +1,14 @@
 import { Component } from '@angular/core'
-import { RouterOutlet } from '@angular/router'
+import { RouterOutlet, Router } from '@angular/router'
+import { CommonModule } from '@angular/common'
 import { Sidebar } from './sidebar/sidebar'
 import { HeroBanner } from './components/hero-banner/hero-banner'
 import { TrustedBy } from './components/trusted-by/trusted-by'
-import { LoginModal } from './components/login-modal/login-modal'
-import { RegisterModal } from './components/register-modal/register-modal'
 import { Snackbar, SnackbarMessage } from './components/snackbar/snackbar'
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Sidebar, HeroBanner, TrustedBy, LoginModal, RegisterModal, Snackbar],
+  imports: [RouterOutlet, CommonModule, Sidebar, HeroBanner, TrustedBy, Snackbar],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -18,7 +17,7 @@ export class App {
   showSnackbar = false
   snackbarMessage: SnackbarMessage | null = null
 
-  constructor() {
+  constructor(private router: Router) {
     ;(window as any).appComponent = this
   }
 
@@ -38,5 +37,9 @@ export class App {
     setTimeout(() => {
       this.showSnackbar = false
     }, 5000)
+  }
+
+  isHomePage(): boolean {
+    return this.router.url === '/'
   }
 }

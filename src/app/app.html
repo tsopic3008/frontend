@@ -1,9 +1,12 @@
 <app-sidebar></app-sidebar>
-<app-hero-banner></app-hero-banner>
-<app-trusted-by></app-trusted-by>
-<div style="padding: 2rem;">
-  <router-outlet></router-outlet>
+
+<!-- Show home page content only on home page -->
+<div *ngIf="isHomePage()">
+  <app-hero-banner></app-hero-banner>
+  <app-trusted-by></app-trusted-by>
 </div>
+
+<router-outlet></router-outlet>
 
 <app-snackbar 
   [show]="showSnackbar" 

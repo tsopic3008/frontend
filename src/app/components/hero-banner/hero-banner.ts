@@ -9,6 +9,8 @@ import { AnimationOptions } from 'ngx-lottie'
 import { LottieComponent } from 'ngx-lottie'
 import { AnimationItem } from 'lottie-web'
 import { CommonModule } from '@angular/common'
+import { Router } from '@angular/router'
+import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-hero-banner',
@@ -21,7 +23,11 @@ export class HeroBanner implements AfterViewInit {
   @ViewChild('lottieEl', { read: ElementRef }) lottieContainer?: ElementRef
   private animItem?: AnimationItem
 
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   options: AnimationOptions = {
     path: 'assets/animations/super-hero.json',
@@ -38,6 +44,22 @@ export class HeroBanner implements AfterViewInit {
       const native = this.lottieContainer.nativeElement
       this.renderer.listen(native, 'mouseenter', () => this.animItem?.pause())
       this.renderer.listen(native, 'mouseleave', () => this.animItem?.play())
+    }
+  }
+
+  onShopNowClick(): void {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/products'])
+    } else {
+      this.showLoginPrompt()
+    }
+  }
+
+  private showLoginPrompt(): void {
+    const appComponent = (window as any).appComponent
+    if (appComponent) {
+      appComponent.showErrorMessage('Please log in to access our products')
+      // You can also trigger the login modal here if needed
     }
   }
 }

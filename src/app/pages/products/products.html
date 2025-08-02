@@ -1,0 +1,54 @@
+<div class="products-container">
+  <div class="products-header">
+    <button class="back-btn" (click)="goBack()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Home
+    </button>
+    <h1>Our Products</h1>
+    <p>Discover our amazing collection of products</p>
+  </div>
+
+  <div class="products-content">
+    <div *ngIf="loading" class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>Loading products...</p>
+    </div>
+
+    <div *ngIf="error && !loading" class="error-container">
+      <div class="error-icon">⚠️</div>
+      <h3>Oops! Something went wrong</h3>
+      <p>{{ error }}</p>
+      <button class="btn btn-primary" (click)="loadProducts()">Try Again</button>
+    </div>
+    <div *ngIf="!loading && !error" class="products-grid">
+      <div *ngFor="let product of products" class="product-card">
+        <div class="product-image">
+          <img 
+            [src]="product.imageUrl || getDefaultImageUrl()" 
+            [alt]="product.name"
+            (error)="onImageError($event)"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">{{ product.name }}</h3>
+          <p class="product-description">{{ product.description }}</p>
+          <div class="product-meta">
+            <span class="product-category">{{ product.categoryName }}</span>
+            <span class="product-price">{{ formatPrice(product.price) }}</span>
+          </div>
+          <button class="btn btn-primary add-to-cart-btn" (click)="addToCart(product)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!loading && !error && products.length === 0" class="empty-container">
+      <div class="empty-icon">📦</div>
+      <h3>No products available</h3>
+      <p>We're currently updating our inventory. Please check back later!</p>
+    </div>
+  </div>
+</div> 

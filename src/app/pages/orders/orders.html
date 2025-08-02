@@ -1,0 +1,74 @@
+<div class="orders-container">
+  <div class="orders-header">
+    <button class="back-btn" (click)="goBack()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Home
+    </button>
+    <h1>My Orders</h1>
+    <p>View your order history and track your purchases</p>
+  </div>
+
+  <div class="orders-content">
+    <div *ngIf="loading" class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>Loading orders...</p>
+    </div>
+
+    <div *ngIf="error && !loading" class="error-container">
+      <div class="error-icon">⚠️</div>
+      <h3>Oops! Something went wrong</h3>
+      <p>{{ error }}</p>
+      <button class="btn btn-primary" (click)="loadOrders()">Try Again</button>
+    </div>
+
+    <div *ngIf="!loading && !error" class="orders-list">
+      <div *ngFor="let order of orders" class="order-card">
+        <div class="order-header">
+          <div class="order-info">
+            <h3 class="order-id">Order #{{ order.id }}</h3>
+            <p class="order-date">Order placed</p>
+          </div>
+          <div class="order-status">
+            <span class="status-badge" style="background-color: #28a745;">
+              Completed
+            </span>
+          </div>
+        </div>
+        
+        <div class="order-items">
+          <div class="items-header">
+            <span>Items ({{ order.items.length }})</span>
+            <span class="order-total">{{ formatPrice(calculateOrderTotal(order)) }}</span>
+          </div>
+          <div class="items-list">
+            <div *ngFor="let item of order.items" class="order-item">
+              <div class="item-details">
+                <div class="item-info">
+                  <h4 class="item-name">{{ item.product.name }}</h4>
+                  <p class="item-description">{{ item.product.description }}</p>
+                  <span class="item-category">{{ item.product.category.name }}</span>
+                </div>
+                <div class="item-quantity">
+                  <span>Quantity: {{ item.quantity }}</span>
+                </div>
+              </div>
+              <div class="item-price">
+                <span class="price">{{ formatPrice(item.product.price * item.quantity) }}</span>
+                <span class="unit-price">${{ formatPrice(item.product.price) }} each</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!loading && !error && orders.length === 0" class="empty-container">
+      <div class="empty-icon">📦</div>
+      <h3>No orders found</h3>
+      <p>You haven't placed any orders yet. Start shopping to see your order history here!</p>
+      <button class="btn btn-primary" (click)="goBack()">Start Shopping</button>
+    </div>
+  </div>
+</div> 

@@ -1,3 +1,8 @@
 import { Routes } from '@angular/router'
+import { Products } from './pages/products/products'
+import { Orders } from './pages/orders/orders'
 
-export const routes: Routes = []
+export const routes: Routes = [
+  { path: 'products', component: Products },
+  { path: 'orders', component: Orders }
+]

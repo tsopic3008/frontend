@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { RouterModule } from '@angular/router'
 import { LoginModal } from '../components/login-modal/login-modal'
 import { RegisterModal } from '../components/register-modal/register-modal'
+import { Cart } from '../components/cart/cart'
 import { AuthService } from '../services/auth.service'
 
 @Component({
   selector: 'app-sidebar',
-  imports: [CommonModule, LoginModal, RegisterModal],
+  imports: [CommonModule, RouterModule, LoginModal, RegisterModal, Cart],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })
@@ -49,7 +51,6 @@ export class Sidebar implements OnInit {
   }
   
   onShowMessage(event: { message: string, type: 'success' | 'error' }) {
-    // Proslijedi poruku do app komponente
     const appComponent = (window as any).appComponent
     if (appComponent) {
       if (event.type === 'success') {

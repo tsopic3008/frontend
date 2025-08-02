@@ -8,6 +8,9 @@
             <a routerLink="/home" routerLinkActive="active">Home</a>
             <a routerLink="/about" routerLinkActive="active">About</a>
             <a routerLink="/contact" routerLinkActive="active">Contact</a>
+            <a routerLink="/orders" routerLinkActive="active" *ngIf="isLoggedIn">My Orders</a>
+            
+            <app-cart *ngIf="isLoggedIn"></app-cart>
             
             <div *ngIf="!isLoggedIn" class="auth-buttons">
                 <button class="register-btn" (click)="openRegisterModal()">
