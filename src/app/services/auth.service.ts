@@ -38,7 +38,7 @@ export interface UserInfo {
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly baseUrl = 'http://localhost:8081'
+  private readonly baseUrl = 'http://tscore-app.local:8080'
 
   constructor() {}
 

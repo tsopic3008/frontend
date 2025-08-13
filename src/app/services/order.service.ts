@@ -41,7 +41,7 @@ export interface OrderResponse {
   providedIn: 'root'
 })
 export class OrderService {
-  private readonly baseUrl = 'http://localhost:8980'
+  private readonly baseUrl = 'http://product-management.local:8080'
 
   constructor(
     private cartService: CartService,

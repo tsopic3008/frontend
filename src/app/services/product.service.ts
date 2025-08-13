@@ -14,7 +14,7 @@ export interface Product {
   providedIn: 'root'
 })
 export class ProductService {
-  private readonly baseUrl = 'http://localhost:8980'
+  private readonly baseUrl = 'http://product-management.local:8080'
 
   constructor() {}
 
